@@ -4,7 +4,7 @@ import React from 'react';
 import Head from 'next/head';
 
 const TeamMember = ({ name, quote, image }) => (
-  <div className="shrink-0 w-[400px] flex flex-col items-center group relative pt-20">
+  <div id="team" className="shrink-0 w-[400px] flex flex-col items-center group relative pt-20">
     {/* Quote and Name */}
     <div className="text-center mb-6 h-24 flex flex-col justify-end transition-transform duration-300 group-hover:-translate-y-2">
       <p className="text-[#FFF6D6] font-medium text-[20px] italic line-clamp-2 px-4">

@@ -17,7 +17,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section className="w-full min-h-screen bg-black px-5 md:px-[100px] py-20 box-border">
+    <section id="gallery" className="w-full min-h-screen bg-black px-5 md:px-[100px] py-20 box-border">
       {/* Header Container */}
       <div className="relative z-10 flex justify-center mb-10 sm:mb-14 md:mb-16">
                 <Title title={"Explore Our Gallery"} />
