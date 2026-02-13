@@ -43,6 +43,7 @@ const Title = ({title, className = ''}) => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
                 <span className="bg-clip-text transition-all duration-300">
+
                     {title}
                 </span>
             </motion.div>

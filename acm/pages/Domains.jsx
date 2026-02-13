@@ -32,7 +32,7 @@ const Card = ({ domain, index }) => {
             <p className="
                 absolute inset-0 flex items-center justify-center pt-30
                 text-[20px] sm:text-[26px] lg:text-[38px] sm:pt-50
-                font-[700] text-black transition-transform duration-300 group-hover:scale-110
+                font-[700] text-black transition-transform duration-300
             ">
                 {domain}
             </p>
@@ -66,7 +66,7 @@ const Domains = () => {
     return (
         <div
             id="domains"
-            className="relative w-full flex flex-col p-6 sm:p-10 mt-10 items-center overflow-hidden"
+            className="relative w-full flex flex-col p-6 pt-10 sm:p-10 mt-10 items-center overflow-hidden"
         >
 
             <div
@@ -77,7 +77,7 @@ const Domains = () => {
                 )}
             />
 
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
 
             <Title title={'Domains'} />
             

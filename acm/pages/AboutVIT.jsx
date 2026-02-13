@@ -6,6 +6,7 @@ import rob from "../public/assets/rob_org.png";
 import jelly from "@/public/assets/jelly.png";
 import {cn} from "@/lib/utils";
 import Title from "@/components/Title";
+import ScrollFloat from "@/components/ScrollFloat";
 
 const AboutVIT = () => {
     return (
@@ -19,9 +20,9 @@ const AboutVIT = () => {
                 )}
             />
 
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
 
-            <div 
+            <div
                 className="pointer-events-none absolute z-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] md:w-[700px] md:h-[700px] lg:w-[1044px] lg:h-[1057px] top-[200px] right-[-150px] sm:top-[300px] sm:right-[-250px] md:top-[400px] md:right-[-350px] lg:top-[-10px] lg:right-[-600px]"
                 style={{
                     opacity: 1,
@@ -30,7 +31,7 @@ const AboutVIT = () => {
             />
 
             {/* Robot with entry and float */}
-            <motion.div 
+            <motion.div
                 initial={{ x: -60, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -51,7 +52,7 @@ const AboutVIT = () => {
             </motion.div>
 
             {/* Center Content with entry fade */}
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -62,16 +63,23 @@ const AboutVIT = () => {
                     <Title title={"About VIT"} />
                 </div>
 
-                <p className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[30px] font-[400] mt-4 sm:mt-6 leading-[1.5] max-w-full lg:max-w-[800px] mx-auto lg:mx-0">
-                    Founded in 1984, VIT Pune is one of India’s top engineering institutions,
-                    renowned for academic excellence, global outlook, and a strong emphasis on
-                    research and innovation.
-                    <br /><br />
-                    The university provides world-class infrastructure, experienced faculty,
-                    and industry-connected programs designed to prepare students for professional
-                    success. From pioneering research to impactful engineering projects, VIT
-                    empowers students to make meaningful contributions across every field.
-                </p>
+                <div className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[30px] font-[400] mt-4 sm:mt-6 leading-[1.5] max-w-full lg:max-w-[800px] mx-auto lg:mx-0">
+                    <ScrollFloat
+                        animationDuration={1}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.03}
+                    >
+                        Founded in 1984, VIT Pune is one of India’s top engineering institutions,
+                        renowned for academic excellence, global outlook, and a strong emphasis on
+                        research and innovation.
+                        The university provides world-class infrastructure, experienced faculty,
+                        and industry-connected programs designed to prepare students for professional
+                        success. From pioneering research to impactful engineering projects, VIT
+                        empowers students to make meaningful contributions across every field.
+                    </ScrollFloat>
+                </div>
             </motion.div>
 
             {/* RESTORED: Background VIT text exactly as your original code */}

@@ -6,6 +6,7 @@ import rob from "../public/assets/rob_blu.png";
 import jelly from "@/public/assets/jelly.png";
 import {cn} from "@/lib/utils";
 import Title from "@/components/Title";
+import ScrollFloat from "@/components/ScrollFloat";
 
 const AboutACM = () => {
     return (
@@ -19,7 +20,7 @@ const AboutACM = () => {
                 )}
             />
             {/* Radial gradient for the container to give a faded look */}
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
 
             {/* Custom radial gradient overlay */}
             <div 
@@ -55,11 +56,19 @@ const AboutACM = () => {
                     <Title className={'text-center lg:text-right lg:mr-[80px]'} title={"About ACM"} />
                 </div>
 
-                <p className="text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] font-[400] mt-4 sm:mt-6 leading-[1.5] max-w-full lg:max-w-[800px] mx-auto lg:mx-0">
-                    The Association for Computing Machinery (ACM) is the world's largest educational and scientific computing society. Since its inception in 1947, ACM has united educators, researchers, and professionals to advance computing as a science and a profession.
-                    <br /><br />
-                    It promotes the highest standards of technical excellence, fosters lifelong learning, and supports career development through a global network of conferences, publications, and professional communities. With a strong commitment to innovation and leadership, ACM continues to shape the future of computing worldwide.
-                </p>
+                <p className="text-right text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] font-[400] mt-4 sm:mt-6 leading-[1.5] max-w-full lg:max-w-[800px] mx-auto lg:mx-0">
+                    <ScrollFloat
+                        animationDuration={3}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.1}
+                    >
+                        The Association for Computing Machinery (ACM) is the world's largest educational and scientific computing society. Since its inception in 1947, ACM has united educators, researchers, and professionals to advance computing as a science and a profession.
+                        It promotes the highest standards of technical excellence, fosters lifelong learning, and supports career development through a global network of conferences, publications, and professional communities. With a strong commitment to innovation and leadership, ACM continues to shape the future of computing worldwide.
+
+                    </ScrollFloat>
+                    </p>
             </motion.div>
 
             {/* Right Robot - Added entry slide and floating motion */}
