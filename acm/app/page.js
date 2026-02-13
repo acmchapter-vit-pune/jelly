@@ -1,4 +1,8 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+import Loader from "@/components/Loader";
+
 import HeroSection from "@/pages/HeroSection";
 import AboutVIT from "@/pages/AboutVIT";
 import AboutACM from "@/pages/AboutACM";
@@ -9,17 +13,28 @@ import Gallery from "@/pages/Gallery";
 import TeamPage from "@/pages/TeamPage";
 
 export default function Home() {
-  return (
-    <div className={'w-full overflow-x-hidden'}>
+    const [loading, setLoading] = useState(true);
 
-      <HeroSection />
-        <AboutVIT />
-        <AboutACM />
-      <Domains />
-      <OurEvents />
-      <Gallery/>
-      <TeamPage/>
-        <Footer />
-    </div>
-  );
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 7000); // 10 seconds
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) return <Loader />;
+
+    return (
+        <div className="w-full overflow-x-hidden">
+            <HeroSection />
+            <AboutVIT />
+            <AboutACM />
+            <Domains />
+            <OurEvents />
+            <Gallery />
+            <TeamPage />
+            <Footer />
+        </div>
+    );
 }
