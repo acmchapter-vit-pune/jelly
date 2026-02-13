@@ -83,15 +83,15 @@ const Navbar = () => {
             >
                 <motion.span
                     animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                    className="block w-8 h-1 bg-black dark:bg-white mb-1.5 rounded-full"
+                    className="block w-8 h-1 bg-black  mb-1.5 rounded-full"
                 />
                 <motion.span
                     animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                    className="block w-8 h-1 bg-black dark:bg-white mb-1.5 rounded-full"
+                    className="block w-8 h-1 bg-black  mb-1.5 rounded-full"
                 />
                 <motion.span
                     animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-                    className="block w-8 h-1 bg-black dark:bg-white rounded-full"
+                    className="block w-8 h-1 bg-black  rounded-full"
                 />
             </button>
 
@@ -103,7 +103,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: "100%" }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className="fixed inset-0 bg-white dark:bg-black z-40 lg:hidden"
+                        className="fixed inset-0  dark:bg-black z-40 lg:hidden"
                     >
                         <div className="flex flex-col items-center justify-center h-full gap-8">
                             {navLinks.map((link, index) => (
