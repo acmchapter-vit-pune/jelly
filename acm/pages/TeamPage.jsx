@@ -1,11 +1,10 @@
-"use client"; 
+"use client";
 
-import React from 'react';
-import Head from 'next/head';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const TeamMember = ({ name, quote, image }) => (
-  <div id="team" className="shrink-0 w-[400px] flex flex-col items-center group relative pt-20">
-    {/* Quote and Name */}
+  <div className="shrink-0 w-[400px] flex flex-col items-center group relative pt-20">
     <div className="text-center mb-6 h-24 flex flex-col justify-end transition-transform duration-300 group-hover:-translate-y-2">
       <p className="text-[#FFF6D6] font-medium text-[20px] italic line-clamp-2 px-4">
         &quot;{quote}&quot;
@@ -15,7 +14,6 @@ const TeamMember = ({ name, quote, image }) => (
       </p>
     </div>
 
-    {/* Profile Image Circle */}
     <div className="w-[280px] h-[280px] rounded-full border-[10px] border-[#C49B28] overflow-hidden bg-[#FFF6D6] z-10 shadow-2xl transition-all duration-300 group-hover:border-[#DFF49E]">
       <img 
         src={image} 
@@ -27,29 +25,24 @@ const TeamMember = ({ name, quote, image }) => (
 );
 
 const TeamPage = () => {
+  const [isPaused, setIsPaused] = useState(false);
+
   const members = [
     { name: "Bhavesh Bhakta", quote: "RCB will win next year - Change My Mind", image: "https://via.placeholder.com/300?text=Bhavesh" },
-    { name: "Atharva Patil", quote: "Code is Poetry", image: "https://via.placeholder.com/300?text=Atharva" },
-    { name: "Atharva Patil", quote: "Code is Poetry", image: "https://via.placeholder.com/300?text=Atharva" },
-    { name: "Atharva Patil", quote: "Code is Poetry", image: "https://via.placeholder.com/300?text=Atharva" },
-    { name: "Atharva Patil", quote: "Code is Poetry", image: "https://via.placeholder.com/300?text=Atharva" },
-    { name: "Atharva Patil", quote: "Code is Poetry", image: "https://via.placeholder.com/300?text=Atharva" },
-    { name: "Atharva Patil", quote: "Code is Poetry", image: "https://via.placeholder.com/300?text=Atharva" },
     { name: "Atharva Patil", quote: "Code is Poetry", image: "https://via.placeholder.com/300?text=Atharva" },
     { name: "Ananya Sharma", quote: "Designing the future, one pixel at a time.", image: "https://via.placeholder.com/300?text=Ananya" },
     { name: "Rohan Das", quote: "Debugging is like being a detective in a movie.", image: "https://via.placeholder.com/300?text=Rohan" },
     { name: "Sanya Malhotra", quote: "Creating magic with ACM every day.", image: "https://via.placeholder.com/300?text=Sanya" },
-    // You can add more members here and the SVG path will extend automatically
   ];
 
-  // Logic to calculate dynamic SVG width
+  const tripleMembers = [...members, ...members, ...members];
   const cardWidth = 450;
-  const totalWidth = members.length * cardWidth;
+  const singleSetWidth = members.length * cardWidth;
 
   return (
     <div className="relative w-full min-h-screen bg-black overflow-hidden flex flex-col">
       
-      {/* DOTTED BACKGROUND LAYER */}
+      {/* Background Layer */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-40 z-0"
         style={{
@@ -58,7 +51,6 @@ const TeamPage = () => {
         }}
       ></div>
 
-      {/* Header Section */}
       <header className="z-20 text-center pt-16 pb-1">
         <h1 className="text-white font-bold text-[48px] leading-tight">
           Meet the minds behind the <span className="border-2 border-[#DFF49E] px-4 py-1 inline-block mx-2">magic</span>
@@ -68,52 +60,64 @@ const TeamPage = () => {
         </h2>
       </header>
 
-      {/* Horizontal Scroll Area */}
-      <div className="relative flex-1 overflow-x-auto no-scrollbar pb-32 z-10">
-        
-        {/* Dynamic Winding Path SVG */}
-        <div 
-          className="absolute top-[55%] left-0 h-[300px] pointer-events-none" 
-          style={{ width: `${totalWidth}px` }}
+      <div className="relative flex-1 overflow-hidden pb-32 z-10 flex items-center">
+        <motion.div 
+          className="flex items-center cursor-pointer"
+          // Hover handlers to pause/unpause
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          animate={{
+            x: isPaused ? undefined : [-singleSetWidth, -singleSetWidth * 2],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 25, 
+              ease: "linear",
+            },
+          }}
+          style={{ width: `${singleSetWidth * 3}px` }}
         >
-          <svg width="100%" height="100%" viewBox={`0 0 ${totalWidth} 300`} preserveAspectRatio="none">
-            <path 
-              d={`M 0 150 ${members.map((_, i) => {
-                const centerX = i * cardWidth + cardWidth / 2;
-                const endX = (i + 1) * cardWidth;
-                const controlY = i % 2 === 0 ? 0 : 300;
-                return `Q ${centerX} ${controlY}, ${endX} 150`;
-              }).join(' ')}`} 
-              stroke="#C49B28" 
-              strokeWidth="80" 
-              fill="none" 
-              strokeLinecap="round"
-              className="opacity-90"
-            />
-          </svg>
-        </div>
-
-        {/* Members List */}
-        <div className="relative flex items-center gap-0 px-20 h-full">
-          {members.map((member, index) => (
+          <div className="relative flex items-center">
+            {/* SVG Path */}
             <div 
-              key={index} 
-              className="flex-shrink-0"
-              style={{ 
-                transform: `translateY(${index % 2 === 0 ? '-50px' : '70px'})`,
-                width: `${cardWidth}px`
-              }}
+              className="absolute top-[50%] left-0 h-[300px] pointer-events-none translate-y-[-20%]" 
+              style={{ width: `${singleSetWidth * 3}px` }}
             >
-              <TeamMember {...member} />
+              <svg width="100%" height="100%" viewBox={`0 0 ${singleSetWidth * 3} 300`} preserveAspectRatio="none">
+                <path 
+                  d={`M 0 150 ${tripleMembers.map((_, i) => {
+                    const centerX = i * cardWidth + cardWidth / 2;
+                    const endX = (i + 1) * cardWidth;
+                    const controlY = i % 2 === 0 ? 0 : 300;
+                    return `Q ${centerX} ${controlY}, ${endX} 150`;
+                  }).join(' ')}`} 
+                  stroke="#C49B28" 
+                  strokeWidth="80" 
+                  fill="none" 
+                  strokeLinecap="round"
+                  className="opacity-90"
+                />
+              </svg>
             </div>
-          ))}
-        </div>
-      </div>
 
-      <style jsx global>{`
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
+            {/* Team Members */}
+            {tripleMembers.map((member, index) => (
+              <div 
+                key={index} 
+                className="flex-shrink-0"
+                style={{ 
+                  transform: `translateY(${index % 2 === 0 ? '-50px' : '70px'})`,
+                  width: `${cardWidth}px`
+                }}
+              >
+                <TeamMember {...member} />
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };

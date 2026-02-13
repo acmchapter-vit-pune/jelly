@@ -2,17 +2,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import nav_logo from "../public/assets/nav_logo.png";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
-    const closeMenu = () => {
-        setIsMenuOpen(false);
-    };
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const closeMenu = () => setIsMenuOpen(false);
 
     const handleSmoothScroll = (e, targetId) => {
         e.preventDefault();
@@ -26,105 +22,118 @@ const Navbar = () => {
         closeMenu();
     };
 
+    const navLinks = [
+        { name: "Home", id: "#home" },
+        { name: "About", id: "#about" },
+        { name: "Domains", id: "#domains" },
+        { name: "Events", id: "#events" },
+        { name: "Gallery", id: "#gallery" },
+        { name: "Team", id: "#team" },
+    ];
+
     return (
         <nav className="relative flex items-center justify-between py-3 sm:py-4 px-4 sm:px-8 md:px-12 z-50">
-            <div className="text-lg font-bold">
-                <Image src={nav_logo} alt={"ACM"} className={'w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px]'}/>
-            </div>
+            {/* Logo with Magnetic Effect */}
+            <motion.div 
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-lg font-bold cursor-pointer"
+            >
+                <Image 
+                    src={nav_logo} 
+                    alt={"ACM"} 
+                    className={'w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] drop-shadow-md'}
+                />
+            </motion.div>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center gap-4 xl:gap-5">
-                <a href={'#home'} onClick={(e) => handleSmoothScroll(e, '#home')} className="text-[18px] xl:text-[22px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors">Home</a>
-                <a href={'#about'} onClick={(e) => handleSmoothScroll(e, '#about')} className="text-[18px] xl:text-[22px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors">About</a>
-                <a href={'#domains'} onClick={(e) => handleSmoothScroll(e, '#domains')} className="text-[18px] xl:text-[22px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors">Domains</a>
-                <p onClick={(e) => handleSmoothScroll(e, '#events')} className="text-[18px] xl:text-[22px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors">Events</p>
-                <p onClick={(e) => handleSmoothScroll(e, '#gallery')} className="text-[18px] xl:text-[22px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors">Gallery</p>
-                <p onClick={(e) => handleSmoothScroll(e, '#team')} className="text-[18px] xl:text-[22px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors">Team</p>
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+                {navLinks.map((link, index) => (
+                    <motion.a
+                        key={link.name}
+                        href={link.id}
+                        onClick={(e) => handleSmoothScroll(e, link.id)}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="relative text-[18px] xl:text-[22px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors group"
+                    >
+                        {link.name}
+                        {/* Animated Underline */}
+                        <span className="absolute left-0 bottom-[-2px] w-0 h-[2px] bg-[#A47E1B] transition-all duration-300 group-hover:w-full" />
+                    </motion.a>
+                ))}
 
-                <div className="bg-[#EDC531] rounded-[5px] hover:bg-[#DBB42C] transition-colors">
-                    <p className="text-[20px] xl:text-[25px] font-bold text-black px-3 xl:px-4 py-2 cursor-pointer">
+                <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-[#EDC531] rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black hover:bg-[#DBB42C] transition-colors"
+                >
+                    <p className="text-[18px] xl:text-[22px] font-bold text-black px-4 py-2 cursor-pointer">
                         Contact Us
                     </p>
-                </div>
+                </motion.div>
             </div>
 
-            {/* Hamburger Button */}
+            {/* Hamburger Button with Morphing Icon */}
             <button
                 onClick={toggleMenu}
-                className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 z-50 focus:outline-none"
+                className="lg:hidden flex flex-col justify-center items-center w-10 h-10 z-50 focus:outline-none"
                 aria-label="Toggle menu"
             >
-                <span
-                    className={`block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300 ${
-                        isMenuOpen ? 'rotate-45 translate-y-2' : ''
-                    }`}
+                <motion.span
+                    animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                    className="block w-8 h-1 bg-black dark:bg-white mb-1.5 rounded-full"
                 />
-                <span
-                    className={`block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300 ${
-                        isMenuOpen ? 'opacity-0' : ''
-                    }`}
+                <motion.span
+                    animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                    className="block w-8 h-1 bg-black dark:bg-white mb-1.5 rounded-full"
                 />
-                <span
-                    className={`block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300 ${
-                        isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                    }`}
+                <motion.span
+                    animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                    className="block w-8 h-1 bg-black dark:bg-white rounded-full"
                 />
             </button>
 
             {/* Mobile Menu Overlay */}
-            <div
-                className={`fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-sm z-40 transform transition-transform duration-300 ease-in-out ${
-                    isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-                } lg:hidden`}
-            >
-                <div className="flex flex-col items-center justify-center h-full gap-8">
-                    <a 
-                        href={'#home'} 
-                        onClick={(e) => handleSmoothScroll(e, '#home')}
-                        className="text-[24px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors"
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, x: "100%" }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: "100%" }}
+                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                        className="fixed inset-0 bg-white dark:bg-black z-40 lg:hidden"
                     >
-                        Home
-                    </a>
-                    <a 
-                        href={'#about'} 
-                        onClick={(e) => handleSmoothScroll(e, '#about')}
-                        className="text-[24px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors"
-                    >
-                        About
-                    </a>
-                    <a 
-                        href={'#domains'} 
-                        onClick={(e) => handleSmoothScroll(e, '#domains')}
-                        className="text-[24px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors"
-                    >
-                        Domains
-                    </a>
-                    <p 
-                        onClick={(e) => handleSmoothScroll(e, '#events')}
-                        className="text-[24px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors"
-                    >
-                        Events
-                    </p>
-                    <p 
-                        onClick={(e) => handleSmoothScroll(e, '#gallery')}
-                        className="text-[24px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors"
-                    >
-                        Gallery
-                    </p>
-                    <p 
-                        onClick={(e) => handleSmoothScroll(e, '#team')}
-                        className="text-[24px] font-bold cursor-pointer hover:text-[#A47E1B] transition-colors"
-                    >
-                        Team
-                    </p>
-
-                    <div className="bg-[#EDC531] rounded-[5px] hover:bg-[#DBB42C] transition-colors mt-4">
-                        <p className="text-[24px] font-bold text-black px-6 py-3 cursor-pointer">
-                            Contact Us
-                        </p>
-                    </div>
-                </div>
-            </div>
+                        <div className="flex flex-col items-center justify-center h-full gap-8">
+                            {navLinks.map((link, index) => (
+                                <motion.a
+                                    key={link.name}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1 + 0.2 }}
+                                    href={link.id}
+                                    onClick={(e) => handleSmoothScroll(e, link.id)}
+                                    className="text-[32px] font-extrabold cursor-pointer hover:text-[#A47E1B]"
+                                >
+                                    {link.name}
+                                </motion.a>
+                            ))}
+                            
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.8 }}
+                                className="bg-[#EDC531] rounded-[5px] border-4 border-black mt-4"
+                            >
+                                <p className="text-[28px] font-bold text-black px-8 py-4 cursor-pointer">
+                                    Contact Us
+                                </p>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </nav>
     );
 };
