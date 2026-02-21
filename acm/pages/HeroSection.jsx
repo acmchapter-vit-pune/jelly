@@ -2,6 +2,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import blu_rob from "../public/assets/rob_blu.png";
 import org_rob from "../public/assets/rob_org.png";
@@ -77,9 +78,11 @@ const HeroSection = () => {
                     className="w-[70%] sm:w-[65%] md:w-[50%] lg:w-[35%] mt-6 sm:mt-7 md:mt-8 lg:mt-8 mx-auto bg-black border-l-4 border-b-4 border-[#EDC531] p-1 sm:p-1.5 md:p-2 lg:p-2"
                 >
                     <div className="bg-[#EDC531]">
-                        <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px] font-bold px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2.5 lg:px-3 lg:py-3 cursor-pointer text-center text-black">
+                        <Link href={`/hackathon`}>
+                        <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px] font-bold px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2.5 lg:px-3 lg:py-3 cursor-pointer text-center text-black" >
                             Check Out Events ↗
                         </p>
+                        </Link>
                     </div>
                 </motion.div>
             </motion.div>

@@ -16,6 +16,15 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (window.location.hash) {
+            const el = document.querySelector(window.location.hash);
+            if (el) {
+                setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
         }, 7000); // 10 seconds
