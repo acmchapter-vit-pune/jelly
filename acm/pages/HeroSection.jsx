@@ -66,8 +66,7 @@ const HeroSection = () => {
                 </motion.p>
 
                 <motion.p variants={itemVariants} className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-[400] pt-4 sm:pt-6 md:pt-7 lg:pt-8 leading-[1.5] px-4 sm:px-8 md:px-12 lg:px-0">
-                    Plus Jakarta Sans is a fresh take on geometric sans serif styles,
-                    designed by Gumpita Rahayu from Tokotype
+                     Advancing computing as a science and profession. Join the premier global community of computing professionals and students.
                 </motion.p>
 
                 {/* Button with Scale and Brightness effect */}
