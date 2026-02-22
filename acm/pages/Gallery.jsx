@@ -7,24 +7,30 @@ import { motion } from 'framer-motion';
 const Gallery = () => {
   // Organized based on your provided Cloudinary links
   const col1Images = [
-    { src: "/assets/box.png" },
-    { src: "/assets/box.png" },
-    { src: "/assets/box.png" },
-    { src: "/assets/box.png" },
+    { src: "/assets/events/codesprint/event1.png", alt: "Codesprint 1" },
+        {src: "/assets/events/codesprint/event2.png", alt: "Codesprint 2" },
+        {src: "/assets/events/codesprint/event3.png", alt: "Codesprint 3" },
+        {  src: "/assets/events/codesprint/winner1.png", alt: "Codesprint 4" },
+        { src: "/assets/events/codesprint/winner2.png", alt: "Codesprint 5" },
+        { src: "/assets/events/codesprint/winner3.png", alt: "Codesprint 6" },
   ];
 
   const col2Images = [
-    { src: "/assets/box.png" },
-    { src: "/assets/box.png" },
-    { src: "/assets/box.png" },
-    { src: "/assets/box.png" },
+      { src: "/assets/events/Enigma/image0.png", alt: "Enigma 7" },
+        { src: "/assets/events/Enigma/image1.png", alt: "Enigma 8" },
+        { src: "/assets/events/Enigma/image2.png", alt: "Enigma 9" },
+        { src: "/assets/events/Enigma/image3.png", alt: "Enigma 10" },
+        { src: "/assets/events/Enigma/image5.png", alt: "Enigma 11" },
+        { src: "/assets/events/Enigma/image6.png", alt: "Enigma 12" },
   ];
 
   const col3Images = [
-    { src: "/assets/box.png" },
-    { src: "/assets/box.png" },
-    { src: "/assets/box.png" },
-    { src: "/assets/box.png" },
+      { src: "/assets/events/Enigma/image7.png", alt: "Enigma 13" },
+        { src: "/assets/events/Enigma/image8.png", alt: "Enigma 14" },
+        { src: "/assets/events/Enigma/image9.png", alt: "Enigma 15" },
+        { src: "/assets/events/Enigma/image41.png", alt: "Enigma 16" },
+        { src: "/assets/events/social-event/image1.png", alt: "Social Event 17" },
+        { src: "/assets/events/social-event/image2.png", alt: "Social Event 18" },
   ];
 
   /**
@@ -59,7 +65,7 @@ const Gallery = () => {
                 loading="lazy"
               />
               {/* Optional Overlay */}
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}
         </motion.div>
@@ -104,3 +110,8 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
+
+
+      
+      
