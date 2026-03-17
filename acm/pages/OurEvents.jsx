@@ -101,12 +101,10 @@ const TimelineNode = () => {
 
 const OurEvents = () => {
     const events = [
-        { title: "Techakthon", description: "ACMOne streamlines operations for ACM VIT's 100+ organizing committee members by centralizing event planning.", year: "2019", side: "right" },
-        { title: "Code Sprint", description: "A 48-hour coding marathon where participants solve real-world problems and build innovative solutions.", year: "2020", side: "left" },
-        { title: "AI Workshop", description: "Hands-on workshop covering machine learning fundamentals and practical applications in modern technology.", year: "2021", side: "right" },
-        { title: "Design Hack", description: "Creative design competition focusing on UI/UX principles and innovative visual solutions.", year: "2022", side: "left" },
-        { title: "Tech Summit", description: "Annual technology conference featuring industry leaders and cutting-edge innovations.", year: "2023", side: "right" },
-        { title: "Innovation Lab", description: "Collaborative space for students to prototype and develop their tech ideas with mentorship.", year: "2024", side: "left" },
+        { title: "Code-Sprint", description: "ACM CodeSprint was a competitive coding event aimed at enhancing students’ technical and problem-solving skills across DSA, Web Development, and OOP. It promoted healthy competition, teamwork, and continuous learning.", year: "2026", side: "right" },
+        { title: "Enigma", description: "ACM Enigma 3.0 was a two-day technical event designed to provide students with hands-on learning, competitive exposure, and industry insights through workshops, competitions, and panel discussions.", year: "2025", side: "left" },
+        { title: "Social-Event", description: "Social Outreach Event", year: "2025", side: "right" },
+       
     ];
 
     return (
