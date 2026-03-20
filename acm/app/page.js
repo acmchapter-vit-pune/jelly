@@ -15,6 +15,7 @@ import TeamPage from "@/pages/TeamPage";
 export default function Home() {
     const [loading, setLoading] = useState(true);
 
+    // Handle hash scrolling
     useEffect(() => {
         if (window.location.hash) {
             const el = document.querySelector(window.location.hash);
@@ -24,12 +25,21 @@ export default function Home() {
         }
     }, []);
 
+    // Loader logic (ONLY FIRST VISIT)
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 7000); // 10 seconds
+        const hasVisited = sessionStorage.getItem("hasVisited");
 
-        return () => clearTimeout(timer);
+        if (hasVisited) {
+            setLoading(false); // skip loader
+        } else {
+            sessionStorage.setItem("hasVisited", "true");
+
+            const timer = setTimeout(() => {
+                setLoading(false);
+            }, 3000); // you can reduce from 7000 → 3000 (better UX)
+
+            return () => clearTimeout(timer);
+        }
     }, []);
 
     if (loading) return <Loader />;

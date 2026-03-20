@@ -101,7 +101,7 @@ const TeamPage = () => {
     };
 
     return (
-        <div className="relative w-full min-h-screen bg-black overflow-hidden flex flex-col">
+        <div id={"team"} className="relative w-full min-h-screen bg-black overflow-hidden flex flex-col">
             <div
                 className="absolute inset-0 pointer-events-none opacity-40 z-0"
                 style={{
