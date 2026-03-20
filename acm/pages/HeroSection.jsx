@@ -79,7 +79,7 @@ const HeroSection = () => {
                     <div className="bg-[#EDC531]">
                         <Link href={`/hackathon`}>
                         <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px] font-bold px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2.5 lg:px-3 lg:py-3 cursor-pointer text-center text-black" >
-                            Check Out Events ↗
+                            Breaking Enigma ↗
                         </p>
                         </Link>
                     </div>
