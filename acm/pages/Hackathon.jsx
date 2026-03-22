@@ -9,6 +9,7 @@ import Faqs from "@/components/Faqs";
 import Link from "next/link"
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import CountdownTimer from "@/components/CountdownTime";
 
 const Hackathon = () => {
     return (
@@ -43,6 +44,9 @@ const Hackathon = () => {
                                 <div>19 April 2026 - 5:00 pm</div>
                             </div>
                         </div>
+
+                        {/* Timer added here */}
+                        <CountdownTimer />
 
                         <Link
                             href="https://unstop.com/hackathons/breaking-enigma-vishwakarma-institute-of-technology-pune-maharashtra-1660436"
