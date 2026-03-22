@@ -133,7 +133,7 @@ const Page = () => {
         { name: "Anvay Kulkarni", position: "President", group: "Core Team", email: "anvay.22311927@viit.ac.in", github: "https://github.com/Anvay14", linkedin: "https://www.linkedin.com/in/anvay-kulkarni-609662279/", imageSrc: anvay },
         { name: "Swanandi Kamat", position: "Secretary", group: "Core Team", email: "swanandi.22310424@viit.ac.in", github: "https://github.com/swanandikamat", linkedin: "https://www.linkedin.com/in/swanandi-kamat-86aa152a6/", imageSrc: swanandi },
         { name: "Tejas Dherange", position: "Treasurer", group: "Core Team", email: "tejas.22310593@viit.ac.in", github: "https://github.com/Tejas-Dherange", linkedin: "https://www.linkedin.com/in/tejas-dherange-54a6a627b", imageSrc: tejas },
-        { name: "Shatavali Bahadure", position: "Event Management", group: "Core Team", email: "shatavali.22310364@viit.ac.in", github: "https://github.com/Shatavali05", linkedin: "https://www.linkedin.com/in/shatavali-bahadure-172509291/", imageSrc: shatavali },
+        { name: "Shatavali Bahadure", position: "Event Coordinator", group: "Core Team", email: "shatavali.22310364@viit.ac.in", github: "https://github.com/Shatavali05", linkedin: "https://www.linkedin.com/in/shatavali-bahadure-172509291/", imageSrc: shatavali },
         { name: "Palak Gudgila", position: "Public Relations Officer", group: "Core Team", email: "palak.22311889@viit.ac.in", github: "https://github.com/palak-gudgila", linkedin: "https://www.linkedin.com/in/palak-gudgila/", imageSrc: palak },
 
         // Technical & Web
@@ -160,7 +160,6 @@ const Page = () => {
         { name: "Atharva Bhajan", position: "Jt-Event Head", group: "Event & Publicity", email: "atharvabhajan0574@gmail.com", github: "https://github.com/Atharvabhajan", linkedin: "https://www.linkedin.com/in/atharvabhajan/", imageSrc: atharvabhajan },
         { name: "Shreyas Khanore", position: "Jt-Event Head", group: "Event & Publicity", email: "shreyas.khanore24@vit.edu", github: "https://github.com/shreyas-khanore", linkedin: "https://www.linkedin.com/in/shreyas-khanore/", imageSrc: shreyas },
         { name: "Namrata Devare", position: "Publicity Head", group: "Event & Publicity", email: "namratadevare5@gmail.com", github: "https://github.com/namrata-devare", linkedin: "https://www.linkedin.com/in/namrata-devare/", imageSrc: namrata },
-        { name: "Rohan Wani", position: "Jt-Publicity Head", group: "Event & Publicity", email: "rohan.wani25@vit.edu", github: "https://github.com/rohan-wani", linkedin: "https://www.linkedin.com/in/rohan-wani/", imageSrc: rohan },
         { name: "Snehal Bomble", position: "Jt-Publicity Head", group: "Event & Publicity", email: "snehal.1252030031@vit.edu", github: "https://github.com/Snehalbomble27", linkedin: "https://www.linkedin.com/in/snehal-bomble-887b73329/", imageSrc: snehal },
         { name: "Siddhant Ukarde", position: "Jt-Publicity Head", group: "Event & Publicity", email: "siddhant.ukarde24@vit.edu", github: "https://github.com/siddhant-ukarde", linkedin: "https://www.linkedin.com/in/siddhant-ukarde/", imageSrc: siddhant },
         { name: "Atharv Vaidya", position: "Event team member", group: "Event & Publicity", email: "atharvaidya007@gmail.com", github: "https://github.com/AthvaCodes", linkedin: "https://www.linkedin.com/in/atharv-vaidya-094b69386/", imageSrc: atharvvaidya },
