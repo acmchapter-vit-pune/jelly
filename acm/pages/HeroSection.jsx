@@ -70,19 +70,75 @@ const HeroSection = () => {
                 </motion.p>
 
                 {/* Button with Scale and Brightness effect */}
-                <motion.div 
+                <motion.div
                     variants={itemVariants}
-                    whileHover={{ scale: 1.02, filter: "brightness(1.1)" }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-[70%] sm:w-[65%] md:w-[50%] lg:w-[35%] mt-6 sm:mt-7 md:mt-8 lg:mt-8 mx-auto bg-black border-l-4 border-b-4 border-[#EDC531] p-1 sm:p-1.5 md:p-2 lg:p-2"
+
+                    initial={{ opacity: 0, y: 20 }}
+
+                    animate={{
+                        opacity: 1,
+                        y: [0, -6, 0]
+                    }}
+
+                    transition={{
+                        opacity: { duration: 0.6 },
+                        y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                    }}
+
+                    whileHover={{
+                        scale: 1.08,
+                        boxShadow: "0px 0px 30px rgba(237,197,49,0.9)"
+                    }}
+
+                    whileTap={{ scale: 0.95 }}
+
+                    className="relative w-[70%] sm:w-[65%] md:w-[50%] lg:w-[35%]
+    mt-6 sm:mt-7 md:mt-8 lg:mt-8 mx-auto
+    bg-black border-l-4 border-b-4 border-[#EDC531]
+    overflow-hidden group p-1 sm:p-1.5 md:p-2 lg:p-2"
                 >
-                    <div className="bg-[#EDC531]">
+
+                    {/* glow pulse */}
+                    <motion.div
+                        className="absolute inset-0 bg-[#EDC531]/20 blur-xl"
+                        animate={{ opacity: [0.3, 0.7, 0.3] }}
+                        transition={{ duration: 1.8, repeat: Infinity }}
+                    />
+
+                    {/* shine animation */}
+                    <motion.div
+                        className="absolute top-0 left-[-120%] w-full h-full
+        bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                        animate={{ left: ["-120%", "120%"] }}
+                        transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1.5 }}
+                    />
+
+                    <div className="relative bg-[#EDC531] group-hover:bg-[#ffd84d] transition duration-300">
                         <Link href={`/hackathon`}>
-                        <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px] font-bold px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2.5 lg:px-3 lg:py-3 cursor-pointer text-center text-black" >
-                            Breaking Enigma ↗
-                        </p>
+                            <div className="overflow-hidden whitespace-nowrap">
+                                <motion.div
+                                    animate={{ x: ["0%", "-50%"] }}
+                                    transition={{
+                                        duration: 10,
+                                        repeat: Infinity,
+                                        ease: "circIn"
+                                    }}
+                                    className="flex gap-10 font-bold
+        text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px]
+        px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2.5 lg:px-3 lg:py-3
+        cursor-pointer text-black tracking-wide"
+                                >
+                                    <span>🚀 Breaking Enigma ↗</span>
+                                    <span>🚀 Breaking Enigma ↗</span>
+                                    <span>🚀 Breaking Enigma ↗</span>
+                                    <span>🚀 Breaking Enigma ↗</span>
+                                    <span>🚀 Breaking Enigma ↗</span>
+                                    <span>🚀 Breaking Enigma ↗</span>
+                                </motion.div>
+                            </div>
                         </Link>
                     </div>
+
                 </motion.div>
             </motion.div>
 
