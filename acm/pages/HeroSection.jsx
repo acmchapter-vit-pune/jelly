@@ -119,9 +119,9 @@ const HeroSection = () => {
                                 <motion.div
                                     animate={{ x: ["0%", "-50%"] }}
                                     transition={{
-                                        duration: 10,
+                                        duration: 8,
                                         repeat: Infinity,
-                                        ease: "circIn"
+                                        ease: "linear"
                                     }}
                                     className="flex gap-10 font-bold
         text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px]
