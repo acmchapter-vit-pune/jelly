@@ -128,12 +128,12 @@ const HeroSection = () => {
         px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2.5 lg:px-3 lg:py-3
         cursor-pointer text-black tracking-wide"
                                 >
-                                    <span>🚀 Breaking Enigma ↗</span>
-                                    <span>🚀 Breaking Enigma ↗</span>
-                                    <span>🚀 Breaking Enigma ↗</span>
-                                    <span>🚀 Breaking Enigma ↗</span>
-                                    <span>🚀 Breaking Enigma ↗</span>
-                                    <span>🚀 Breaking Enigma ↗</span>
+                                    <span>Breaking Enigma ↗</span>
+                                    <span>Breaking Enigma ↗</span>
+                                    <span>Breaking Enigma ↗</span>
+                                    <span>Breaking Enigma ↗</span>
+                                    <span>Breaking Enigma ↗</span>
+                                    <span>Breaking Enigma ↗</span>
                                 </motion.div>
                             </div>
                         </Link>
