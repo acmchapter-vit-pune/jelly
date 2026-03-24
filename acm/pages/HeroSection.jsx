@@ -70,74 +70,100 @@ const HeroSection = () => {
                 </motion.p>
 
                 {/* Button with Scale and Brightness effect */}
-                <motion.div
-                    variants={itemVariants}
-
-                    initial={{ opacity: 0, y: 20 }}
-
-                    animate={{
-                        opacity: 1,
-                        y: [0, -6, 0]
-                    }}
-
-                    transition={{
-                        opacity: { duration: 0.6 },
-                        y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-                    }}
-
-                    whileHover={{
-                        scale: 1.08,
-                        boxShadow: "0px 0px 30px rgba(237,197,49,0.9)"
-                    }}
-
-                    whileTap={{ scale: 0.95 }}
-
-                    className="relative w-[70%] sm:w-[65%] md:w-[50%] lg:w-[35%]
-    mt-6 sm:mt-7 md:mt-8 lg:mt-8 mx-auto
-    bg-black border-l-4 border-b-4 border-[#EDC531]
-    overflow-hidden group p-1 sm:p-1.5 md:p-2 lg:p-2"
-                >
-
-                    {/* glow pulse */}
-                    <motion.div
-                        className="absolute inset-0 bg-[#EDC531]/20 blur-xl"
-                        animate={{ opacity: [0.3, 0.7, 0.3] }}
-                        transition={{ duration: 1.8, repeat: Infinity }}
-                    />
-
-                    {/* shine animation */}
-                    <motion.div
-                        className="absolute top-0 left-[-120%] w-full h-full
-        bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                        animate={{ left: ["-120%", "120%"] }}
-                        transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1.5 }}
-                    />
-
-                    <div className="relative bg-[#EDC531] group-hover:bg-[#ffd84d] transition duration-300">
-                        <Link href={`/hackathon`}>
-                            <div className="overflow-hidden whitespace-nowrap">
                                 <motion.div
-                                    animate={{ x: ["0%", "-50%"] }}
-                                    transition={{
-                                        duration: 8,
-                                        repeat: Infinity,
-                                        ease: "linear"
-                                    }}
-                                    className="flex gap-10 font-bold
-        text-[14px] sm:text-[16px] md:text-[18px] lg:text-[22px]
-        px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2.5 lg:px-3 lg:py-3
-        cursor-pointer text-black tracking-wide"
-                                >
-                                    <span>Breaking Enigma ↗</span>
-                                    <span>Breaking Enigma ↗</span>
-                                    <span>Breaking Enigma ↗</span>
-                                    <span>Breaking Enigma ↗</span>
-                                    <span>Breaking Enigma ↗</span>
-                                    <span>Breaking Enigma ↗</span>
-                                </motion.div>
-                            </div>
-                        </Link>
-                    </div>
+                    variants={itemVariants}
+                                        initial={{ opacity: 0, y: 6 }}
+
+                                        animate={{ opacity: 1, y: 0 }}
+
+                                        transition={{ duration: 0.6 }}
+
+                                        whileHover={{ scale: 1.03 }}
+
+                                        whileTap={{ scale: 0.98 }}
+
+                                        className="relative w-auto mx-auto mt-6 sm:mt-8 lg:mt-10 px-0"
+                                    >
+
+                                        {/* outer crate: restored subtle black background + gold borders (compact) */}
+                                        <div className="relative inline-block mx-auto bg-black border-l-4 border-b-4 border-[#EDC531] overflow-hidden p-1 rounded-md">
+
+                                            {/* reduced glow layer to keep atmosphere without clutter */}
+                                            <motion.div
+                                                className="absolute inset-0 bg-[#EDC531]/12 blur-sm pointer-events-none"
+                                                animate={{ opacity: [0.12, 0.28, 0.12] }}
+                                                transition={{ duration: 2.4, repeat: Infinity }}
+                                            />
+
+                                            {/* subtle shine sweep */}
+                                            <motion.div
+                                                className="absolute top-0 left-[-90%] w-[140%] h-full bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"
+                                                animate={{ left: ["-90%", "110%"] }}
+                                                transition={{ duration: 3.2, repeat: Infinity, repeatDelay: 2 }}
+                                            />
+
+                                            <div className="relative inline-flex justify-center bg-[#EDC531] px-4 py-2 rounded-sm">
+                                                {/* Compact live CTA — narrower so it doesn't span the whole hero */}
+                                                <Link href="/hackathon" className="live-cta-btn inline-flex items-center">
+                                                    <span className="live-badge">
+                                                        <span className="dot" />
+                                                        LIVE
+                                                    </span>
+                                                    <span className="ml-3 text-sm font-semibold">Breaking Enigma&nbsp;↗</span>
+                                                </Link>
+
+                                                <style jsx>{`
+                                                    .live-badge {
+                                                        display: inline-flex;
+                                                        align-items: center;
+                                                        gap: 6px;
+                                                        background: #c0001a;
+                                                        color: #fff;
+                                                        font-size: 11px;
+                                                        font-weight: 700;
+                                                        letter-spacing: 0.12em;
+                                                        padding: 4px 8px;
+                                                        border-radius: 4px;
+                                                        vertical-align: middle;
+                                                    }
+
+                                                    .live-badge .dot {
+                                                        width: 7px;
+                                                        height: 7px;
+                                                        border-radius: 50%;
+                                                        background: #fff;
+                                                        animation: blink 1s step-start infinite;
+                                                        display: inline-block;
+                                                    }
+
+                                                    @keyframes blink {
+                                                        0%, 100% { opacity: 1; }
+                                                        50%       { opacity: 0; }
+                                                    }
+
+                                                    .live-cta-btn {
+                                                        background: #f5c430;
+                                                        color: #111;
+                                                        font-size: 14px;
+                                                        font-weight: 700;
+                                                        padding: 10px 18px;
+                                                        border-radius: 8px;
+                                                        cursor: pointer;
+                                                        border: none;
+                                                        letter-spacing: 0.01em;
+                                                        text-decoration: none;
+                                                        gap: 12px;
+                                                        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+                                                    }
+
+                                                    .live-cta-btn:hover {
+                                                        background: #ffd84d;
+                                                    }
+
+                                                    /* Keep the styles scoped but allow tailwind layout to remain */
+                                                                            `}</style>
+                                                                            </div>
+                                                                    </div>
 
                 </motion.div>
             </motion.div>
