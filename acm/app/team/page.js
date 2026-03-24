@@ -42,6 +42,7 @@ import namrata from "@/public/assets/team/namrata.jpg";
 import shreyas from "@/public/assets/team/shreyas.jpeg";
 import rohan from "@/public/assets/team/rohan.png";
 import rajesh from "@/public/assets/team/rajesh.png";
+import Navbar from "@/components/Navbar";
 
 const FacultyCard = ({ name, position, image }) => {
     return (
@@ -180,6 +181,7 @@ const Page = () => {
 
     return (
         <div className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
+        <Navbar/>
             {/* Keeping the radial glows for depth but removed the grid */}
             <div 
                 className="pointer-events-none fixed z-0 w-[600px] h-[600px] lg:w-[1000px] lg:h-[1000px] top-[-200px] left-[-200px]"
