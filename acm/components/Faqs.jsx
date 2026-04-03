@@ -33,7 +33,7 @@ const faqs = [
     },
     {
         q: "Is there any registration fee?",
-        a: "Yes, only shortlisted teams need to pay ₹500 per team to participate in the final round."
+        a: "Yes, only shortlisted teams need to pay ₹500 (+GST included for students for teams which are not from VIT) per team to participate in the final round."
     },
     {
         q: "Will accommodation and food be provided?",
