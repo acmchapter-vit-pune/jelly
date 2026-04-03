@@ -64,7 +64,7 @@ const Hackathon = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 px-5 sm:px-10 lg:px-[84px] gap-0 lg:gap-[84px] border-t border-b border-dashed border-gray-500">
 
                 <div className="flex flex-col gap-5 py-14 lg:py-[84px] lg:border-l lg:border-r border-dashed border-gray-500">
-                    <p className="ml-5 text-[16px] sm:text-[20px] text-[#6C6C6C]">[ABOUT CONVERGE]</p>
+                    <p className="ml-5 text-[16px] sm:text-[20px] text-[#6C6C6C]">[ABOUT BREAKING ENIGMA]</p>
 
                     <p className="hack pl-5 pb-5 border-t border-b border-dashed border-gray-500 text-[36px] sm:text-[48px] lg:text-[64px] font-400 text-[#FF4600]">
                         kya hai breaking enigma?
