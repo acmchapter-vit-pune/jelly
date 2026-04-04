@@ -89,7 +89,7 @@ const Navbar = () => {
                     className="bg-[#EDC531] rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-black hover:bg-[#DBB42C] transition-colors"
                 >
                     <p
-                        onClick={(e) => handleSmoothScroll(e, "#contact")}
+                        onClick={() => router.push('/contactUs')}
                         className="text-[18px] xl:text-[22px] font-bold text-black px-4 py-2 cursor-pointer"
                     >
                         Contact Us
