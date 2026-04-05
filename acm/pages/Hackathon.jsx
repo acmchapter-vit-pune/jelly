@@ -10,6 +10,7 @@ import Link from "next/link"
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import CountdownTimer from "@/components/CountdownTime";
+import Sponsors from "@/components/Sponsors";
 
 const Hackathon = () => {
     return (
@@ -97,6 +98,8 @@ const Hackathon = () => {
                     <HackTime />
                 </div>
             </div>
+
+            <Sponsors />
 
             {/* PRIZES SECTION */}
             <div className="flex flex-col px-5 sm:px-10 lg:px-[84px] gap-0 lg:gap-[84px] border-t border-b border-dashed border-gray-500">
