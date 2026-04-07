@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import CountdownTimer from "@/components/CountdownTime";
 import Sponsors from "@/components/Sponsors";
+import ShortlistButton from "@/components/ShortlistButton";
 
 const Hackathon = () => {
     return (
@@ -49,14 +50,15 @@ const Hackathon = () => {
                         {/* Timer added here */}
                         <CountdownTimer />
 
-                        <Link
-                            href="https://unstop.com/hackathons/breaking-enigma-vishwakarma-institute-of-technology-pune-maharashtra-1660436"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block px-6 py-2.5 border-2 border-white rounded-lg text-sm sm:text-base font-medium text-white transition-all duration-300 ease-in-out hover:bg-white hover:text-black hover:scale-105 hover:shadow-lg active:scale-95"
-                        >
-                            Register Now
-                        </Link>
+                        {/*<Link*/}
+                        {/*    href="/hackathon"*/}
+                        {/*    // href="/hackathon/shortlists"*/}
+                        {/*    className="disabled:pointer-events-none inline-block px-6 py-2.5 border-2 border-white rounded-lg text-sm sm:text-base font-medium text-white transition-all duration-300 ease-in-out hover:bg-white hover:text-black hover:scale-105 hover:shadow-lg active:scale-95"*/}
+                        {/*>*/}
+                        {/*    SHORTLISTS*/}
+                        {/*</Link>*/}
+
+                        <ShortlistButton />
                     </div>
                 </div>
             </div>
