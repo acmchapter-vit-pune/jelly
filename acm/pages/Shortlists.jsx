@@ -8,19 +8,84 @@ const Shortlists = () => {
     const [searchQuery, setSearchQuery] = useState("");
 
     // --- DEMO DATA ---
-    const mainTeams = Array.from({ length: 50 }, (_, i) => ({
-        id: i + 1,
-        name: `Team ${['Alpha', 'Nexus', 'Cyber', 'Enigma', 'Byte', 'Void'][i % 6]} ${i + 1}`,
-        leader: `Participant ${i + 1}`,
-        track: ['FinTech', 'HealthTech', 'AI/ML', 'Web3'][i % 4],
+    const rawTeamsData = [
+        { "team_name": "Segmentation_Faults", "leader_name": "Vedant Pawar", "track": "Women Safety" },
+        { "team_name": "SPectra", "leader_name": "Saloni Tanmor", "track": "Social Impact" },
+        { "team_name": "AlertMate", "leader_name": "Urvi Chaudhari", "track": "Women Safety" },
+        { "team_name": "Null Pointers", "leader_name": "Sakshi Bhosale", "track": "Gen AI" },
+        { "team_name": "XtraFusion", "leader_name": "Om Salunke", "track": "Gen AI" },
+        { "team_name": "Commit || Cry", "leader_name": "Girish  Nalkar", "track": "Women Safety" },
+        { "team_name": "Clash of Code", "leader_name": "Soham Suryawanshi", "track": "Social Impact" },
+        { "team_name": "Code Comets", "leader_name": "Purva Waykole", "track": "Gen AI" },
+        { "team_name": "Team BKC", "leader_name": "Devang Damkondwar", "track": "Gen AI" },
+        { "team_name": "Goblet Of Fire", "leader_name": "ARYAN SURATKAR", "track": "Gen AI" },
+        { "team_name": "Status 200", "leader_name": "Saurabhi Sharma", "track": "Women Safety" },
+        { "team_name": "Triple A", "leader_name": "ALISHA SAVANT", "track": "Women Safety" },
+        { "team_name": "Delta Devs", "leader_name": "subrav bhande", "track": "Women Safety" },
+        { "team_name": "Enigma Crackers", "leader_name": "Sairaj Lad", "track": "Women Safety" },
+        { "team_name": "BrainByte", "leader_name": "Sakshi Huple", "track": "Women Safety" },
+        { "team_name": "God's Plan", "leader_name": "Anshul Patidar", "track": "Healthcare" },
+        { "team_name": "B4U", "leader_name": "Prasad Khot", "track": "Women Safety" },
+        { "team_name": "The_Invinsibles", "leader_name": "Loheyta Dhanure", "track": "Women Safety" },
+        { "team_name": "113 Titans", "leader_name": "Prathamesh Sude", "track": "EdTech" },
+        { "team_name": "Shantabai Mandali", "leader_name": "Madhura  Ubhe", "track": "EdTech" },
+        { "team_name": "CookedDevelopers", "leader_name": "Supriya Mulik", "track": "Women Safety" },
+        { "team_name": "Agnisphere", "leader_name": "Ashish Varpe", "track": "Social Impact" },
+        { "team_name": "Consensus Labs", "leader_name": "Radhika Kandalkar", "track": "Women Safety" },
+        { "team_name": "Error 404", "leader_name": "Sonia Nanwani", "track": "Women Safety" },
+        { "team_name": "Drvn Studio", "leader_name": "Ayush Gadve", "track": "Healthcare" },
+        { "team_name": "Team INSPIRE", "leader_name": "Anisha Shankar", "track": "Women Safety" },
+        { "team_name": "Wrath Of God", "leader_name": "Harsh Mahajan", "track": "Gen AI" },
+        { "team_name": "The Last Semicolon", "leader_name": "Nikhil Thakur", "track": "Social Impact" },
+        { "team_name": "GenZPT", "leader_name": "Abhaykumar  Roy", "track": "Women Safety" },
+        { "team_name": "Helix", "leader_name": "Shriya Bhat", "track": "Women Safety" },
+        { "team_name": "Kremlin Spies", "leader_name": "Gauravi Phansekar", "track": "Women Safety" },
+        { "team_name": "Team Divas", "leader_name": "Aahana Patil", "track": "Social Impact" },
+        { "team_name": "Mind Matrix", "leader_name": "Arman Shaikh", "track": "Women Safety" },
+        { "team_name": "Swarajya", "leader_name": "RAJIWADE SHIVAM", "track": "Women Safety" },
+        { "team_name": "ShunyaCode", "leader_name": "Ameya Jadhav", "track": "Women Safety" },
+        { "team_name": "Globians", "leader_name": "Avaneesh Kulkarni", "track": "EdTech" },
+        { "team_name": "Code comrades", "leader_name": "Vishal Chavan", "track": "Healthcare" },
+        { "team_name": "Rasmalai", "leader_name": "Vivek Bhange", "track": "Gen AI" },
+        { "team_name": "Crusade", "leader_name": "Pranoti Chakwate", "track": "Social Impact" },
+        { "team_name": "Zero to One", "leader_name": "Atharva Ubhe", "track": "Women Safety" },
+        { "team_name": "Team Trata", "leader_name": "Siddheshwar Budge", "track": "Women Safety" },
+        { "team_name": "Team Refactor", "leader_name": "Paras Kumbhar", "track": "EdTech" },
+        { "team_name": "Igniters", "leader_name": "Yash Shardul", "track": "Social Impact" },
+        { "team_name": "Synapse Squad", "leader_name": "Sanvi Bongale", "track": "EdTech" },
+        { "team_name": "CodeTrinity", "leader_name": "NAMRATA PATIL", "track": "Women Safety" },
+        { "team_name": "BrainBridge", "leader_name": "vedant attarkar", "track": "EdTech" },
+        { "team_name": "RS2T", "leader_name": "Tanishq Tumram", "track": "EdTech" },
+        { "team_name": "Data Seekers", "leader_name": "DAKSH SOOD", "track": "EdTech" },
+        { "team_name": "Le'Squad", "leader_name": "Vivek Sutar", "track": "Women Safety" },
+        { "team_name": "team MARIA", "leader_name": "VED MADURWAR", "track": "Gen AI" },
+        { "team_name": "Binary Brains", "leader_name": "Hussain Vahora", "track": "Women Safety" },
+        { "team_name": "MetaMinds", "leader_name": "Manswi Badgujar", "track": "EdTech" },
+        { "team_name": "Warriors-X", "leader_name": "Aryan Ghadekar", "track": "EdTech" },
+        { "team_name": "MindForge", "leader_name": "Shravani Kale", "track": "Gen AI" },
+        { "team_name": "VELORA", "leader_name": "Pranav Sawant", "track": "Women Safety" },
+        { "team_name": "Team SSRV", "leader_name": "Sarthak Chawke", "track": "Women Safety" },
+        { "team_name": "Dhurandhar", "leader_name": "Shrivardhan Patil", "track": "EdTech" },
+        { "team_name": "THE AMATEURS", "leader_name": "Kunal Honde", "track": "Healthcare" },
+        { "team_name": "Error 502", "leader_name": "Abdullah Khan", "track": "Gen AI" },
+        { "team_name": "NODEtorious", "leader_name": "Vedansh Dubey", "track": "EdTech" }
+    ];
+
+// Map the first 50 items to mainTeams
+    const mainTeams = rawTeamsData.slice(0, 50).map((team, index) => ({
+        id: index + 1,
+        name: team.team_name,
+        leader: team.leader_name,
+        track: team.track,
         status: "Shortlisted"
     }));
 
-    const waitingTeams = Array.from({ length: 5 }, (_, i) => ({
-        id: i + 51,
-        name: `Waitlist Team ${String.fromCharCode(65 + i)}`,
-        leader: `Leader ${i + 100}`,
-        track: ['General', 'AI/ML', 'Web3'][i % 3],
+// Map the remaining 10 items (index 50 to 59) to waitingTeams
+    const waitingTeams = rawTeamsData.slice(50, 60).map((team, index) => ({
+        id: index + 51,
+        name: team.team_name,
+        leader: team.leader_name,
+        track: team.track,
         status: "Waiting"
     }));
 
