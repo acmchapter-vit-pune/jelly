@@ -14,7 +14,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { io } from "socket.io-client";
+import { getPusherClient } from "@/lib/pusherClient";
 import { PROBLEM_STATEMENTS } from "@/lib/psData";
 
 const MAX_TEAMS = 7;
@@ -61,18 +61,26 @@ const PsDescription = () => {
             })
             .catch(console.error);
 
-        const socket = io({ transports: ["websocket", "polling"] });
-        socketRef.current = socket;
-        socket.on("connect",    () => setIsConnected(true));
-        socket.on("disconnect", () => setIsConnected(false));
-        socket.on("ps-update", ({ psId: uid, remaining }) => {
+        const client  = getPusherClient();
+        const channel = client.subscribe('ps-updates');
+        socketRef.current = channel;
+
+        client.connection.bind('connected',    () => setIsConnected(true));
+        client.connection.bind('disconnected', () => setIsConnected(false));
+        client.connection.bind('connecting',   () => setIsConnected(false));
+        setIsConnected(client.connection.state === 'connected');
+
+        channel.bind('ps-update', ({ psId: uid, remaining }) => {
             if (uid === psId)
                 setSlotInfo({ remaining: Math.max(0, remaining), isClosed: remaining <= 0, count: MAX_TEAMS - Math.max(0, remaining) });
         });
-        socket.on("ps-closed", ({ psId: cid }) => {
+        channel.bind('ps-closed', ({ psId: cid }) => {
             if (cid === psId) setSlotInfo({ remaining: 0, isClosed: true, count: MAX_TEAMS });
         });
-        return () => socket.disconnect();
+        return () => {
+            channel.unbind_all();
+            client.unsubscribe('ps-updates');
+        };
     }, [psId, ps]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // 404

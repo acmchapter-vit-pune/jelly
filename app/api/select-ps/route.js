@@ -18,6 +18,7 @@ import { NextResponse } from 'next/server';
 import connectMongoDB from '@/lib/mongodb';
 import Selection from '@/models/Selection';
 import redis from '@/lib/redis';
+import pusher from '@/lib/pusher';
 import { PROBLEM_STATEMENTS, MAX_TEAMS_PER_PS } from '@/lib/psData';
 
 const COOKIE_NAME = 'sid';
@@ -115,12 +116,11 @@ export async function POST(request) {
             throw mongoErr;
         }
 
-        // ── Socket.IO broadcast ────────────────────────────────────────────
+        // ── Pusher broadcast ───────────────────────────────────────────────
         const remaining = MAX_TEAMS_PER_PS - count;
-        const io = global._io;
-        if (io) {
-            io.emit('ps-update', { psId, remaining, count });
-            if (count >= MAX_TEAMS_PER_PS) io.emit('ps-closed', { psId });
+        await pusher.trigger('ps-updates', 'ps-update', { psId, remaining, count });
+        if (count >= MAX_TEAMS_PER_PS) {
+            await pusher.trigger('ps-updates', 'ps-closed', { psId });
         }
 
         return NextResponse.json({

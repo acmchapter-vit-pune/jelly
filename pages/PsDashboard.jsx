@@ -11,7 +11,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { io } from "socket.io-client";
+import { getPusherClient } from "@/lib/pusherClient";
 import { PROBLEM_STATEMENTS } from "@/lib/psData";
 
 const MAX_TEAMS = 7;
@@ -105,14 +105,17 @@ const PsDashboard = () => {
             .then(json => { if (json.success) setPsData(json.data); })
             .catch(console.error);
 
-        // Connect socket
-        const socket = io({ transports: ["websocket", "polling"] });
-        socketRef.current = socket;
+        // Connect via Pusher
+        const client  = getPusherClient();
+        const channel = client.subscribe('ps-updates');
+        socketRef.current = channel;
 
-        socket.on("connect",    () => setIsConnected(true));
-        socket.on("disconnect", () => setIsConnected(false));
+        client.connection.bind('connected',    () => setIsConnected(true));
+        client.connection.bind('disconnected', () => setIsConnected(false));
+        client.connection.bind('connecting',   () => setIsConnected(false));
+        setIsConnected(client.connection.state === 'connected');
 
-        socket.on("ps-update", ({ psId, remaining }) => {
+        channel.bind('ps-update', ({ psId, remaining }) => {
             setPsData(prev => prev.map(ps =>
                 ps.id === psId
                     ? { ...ps, remaining: Math.max(0, remaining), isClosed: remaining <= 0, count: MAX_TEAMS - Math.max(0, remaining) }
@@ -121,14 +124,17 @@ const PsDashboard = () => {
             setLastUpdated(new Date().toLocaleTimeString());
         });
 
-        socket.on("ps-closed", ({ psId }) => {
+        channel.bind('ps-closed', ({ psId }) => {
             setPsData(prev => prev.map(ps =>
                 ps.id === psId ? { ...ps, remaining: 0, isClosed: true, count: MAX_TEAMS } : ps
             ));
             setLastUpdated(new Date().toLocaleTimeString());
         });
 
-        return () => socket.disconnect();
+        return () => {
+            channel.unbind_all();
+            client.unsubscribe('ps-updates');
+        };
     }, [authed]);
 
     if (!authed) return <SecretGate onSuccess={() => setAuthed(true)} />;

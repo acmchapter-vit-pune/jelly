@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { io } from "socket.io-client";
+import { getPusherClient } from "@/lib/pusherClient";
 import { PROBLEM_STATEMENTS } from "@/lib/psData";
 
 const MAX_TEAMS = 7;
@@ -32,21 +32,31 @@ const PsRevealPage = () => {
             .then(json => { if (json.success) setPsData(json.data); })
             .catch(console.error);
 
-        const socket = io({ transports: ["websocket", "polling"] });
-        socketRef.current = socket;
-        socket.on("connect",    () => setIsConnected(true));
-        socket.on("disconnect", () => setIsConnected(false));
-        socket.on("ps-update", ({ psId, remaining }) =>
+        const client  = getPusherClient();
+        const channel = client.subscribe('ps-updates');
+        socketRef.current = channel;
+
+        client.connection.bind('connected',    () => setIsConnected(true));
+        client.connection.bind('disconnected', () => setIsConnected(false));
+        client.connection.bind('connecting',   () => setIsConnected(false));
+
+        // set initial state based on current connection
+        setIsConnected(client.connection.state === 'connected');
+
+        channel.bind('ps-update', ({ psId, remaining }) =>
             setPsData(prev => prev.map(ps =>
                 ps.id === psId ? { ...ps, remaining: Math.max(0, remaining), isClosed: remaining <= 0 } : ps
             ))
         );
-        socket.on("ps-closed", ({ psId }) =>
+        channel.bind('ps-closed', ({ psId }) =>
             setPsData(prev => prev.map(ps =>
                 ps.id === psId ? { ...ps, remaining: 0, isClosed: true } : ps
             ))
         );
-        return () => socket.disconnect();
+        return () => {
+            channel.unbind_all();
+            client.unsubscribe('ps-updates');
+        };
     }, []);
 
     const openCount   = psData.filter(p => !p.isClosed).length;
