@@ -38,8 +38,9 @@ const SlotDots = ({ remaining, color }) => {
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 const PsDescription = () => {
-    const { psId } = useParams();
-    const router   = useRouter();
+    const params  = useParams();
+    const psId    = params?.psId ?? null;
+    const router  = useRouter();
 
     const ps = PROBLEM_STATEMENTS.find(p => p.id === psId);
 
