@@ -228,14 +228,22 @@ const PsDashboard = () => {
                     </div>
 
                     <div className="overflow-x-auto px-2 sm:px-5">
-                        <table className="w-full min-w-[520px] border-collapse">
+                        <table className="w-full min-w-[640px] border-collapse table-fixed">
+                            <colgroup>
+                                <col className="w-[80px]" />
+                                <col />
+                                <col className="w-[180px]" />
+                                <col className="w-[80px]" />
+                                <col className="w-[110px]" />
+                                <col className="w-[100px]" />
+                            </colgroup>
                             <thead>
                                 <tr className="border-b border-dashed border-gray-600">
                                     <th className="text-left p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">PS ID</th>
                                     <th className="text-left p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">Title</th>
                                     <th className="text-left p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest hidden sm:table-cell">Domain</th>
                                     <th className="text-center p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">Teams</th>
-                                    <th className="text-center p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">Slots Left</th>
+                                    <th className="text-center p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">Slots</th>
                                     <th className="text-center p-3 sm:p-4 font-mono text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">Status</th>
                                 </tr>
                             </thead>
@@ -261,8 +269,8 @@ const PsDashboard = () => {
                                                 </td>
 
                                                 {/* Title */}
-                                                <td className="p-3 sm:p-4">
-                                                    <span className="font-bold text-sm sm:text-base text-white">
+                                                <td className="p-3 sm:p-4 max-w-0">
+                                                    <span className="font-bold text-sm sm:text-base text-white block truncate" title={ps.title}>
                                                         {ps.title}
                                                     </span>
                                                 </td>
