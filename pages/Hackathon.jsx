@@ -1,18 +1,15 @@
 "use client";
-import React from 'react';
-import Navbar from "@/components/Navbar";
-import Image from "next/image";
-import hackathon_bg from '../public/assets/hackathon-bg.png';
-import hackathon_abt from '../public/assets/hackathon-abt.png';
-import HackTime from "@/components/HackTime";
-import Faqs from "@/components/Faqs";
-import Link from "next/link"
-import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
 import CountdownTimer from "@/components/CountdownTime";
-import Sponsors from "@/components/Sponsors";
+import Faqs from "@/components/Faqs";
+import Footer from "@/components/Footer";
+import HackTime from "@/components/HackTime";
+import Navbar from "@/components/Navbar";
 import ShortlistButton from "@/components/ShortlistButton";
-import PsButton from "@/components/PsButton";
+import Sponsors from "@/components/Sponsors";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import hackathon_abt from '../public/assets/hackathon-abt.png';
+import hackathon_bg from '../public/assets/hackathon-bg.png';
 
 const Hackathon = () => {
     return (
