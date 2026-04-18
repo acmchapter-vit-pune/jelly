@@ -60,10 +60,10 @@ const HeroSection = () => {
                 </motion.div>
 
                 {/* Text Content with Fade-In */}
-                <motion.p variants={itemVariants} className="text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px] font-[800] leading-[1.1] px-4 sm:px-8 lg:px-0">
+                <motion.div variants={itemVariants} className="text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px] font-[800] leading-[1.1] px-4 sm:px-8 lg:px-0">
                     <Title title={"We are"} /> <span className="text-[#DBB42C]">association</span>
                     <br /> of computing machinery
-                </motion.p>
+                </motion.div>
 
                 <motion.p variants={itemVariants} className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-[400] pt-4 sm:pt-6 md:pt-7 lg:pt-8 leading-[1.5] px-4 sm:px-8 md:px-12 lg:px-0">
                      Advancing computing as a science and profession. Join the premier global community of computing professionals and students.

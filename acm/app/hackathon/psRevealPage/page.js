@@ -1,10 +1,10 @@
 import React from 'react';
-import ProblemStatements from "@/pages/ProblemStatements";
+import PsRevealPage from "@/pages/PsRevealPage";
 
 const Page = () => {
     return (
         <div className="w-full overflow-x-hidden">
-            <ProblemStatements />
+            <PsRevealPage />
         </div>
     );
 };
