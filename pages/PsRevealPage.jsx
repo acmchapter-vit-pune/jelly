@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import { getPusherClient } from "@/lib/pusherClient";
 import { PROBLEM_STATEMENTS } from "@/lib/psData";
 
-const MAX_TEAMS = 7;
+const MAX_TEAMS = 6;
 
 const PsRevealPage = () => {
     const router = useRouter();
@@ -165,7 +165,7 @@ const PsRevealPage = () => {
                                 <span className="font-mono text-xs sm:text-sm flex-shrink-0"
                                       style={{ color: ps.remaining <= 2 ? "#F5B301" : ps.color }}>
                                     <span className="font-bold">{ps.remaining}</span>
-                                    <span className="text-gray-600">/7 left</span>
+                                    <span className="text-gray-600">/6 left</span>
                                 </span>
                             )}
                         </motion.div>

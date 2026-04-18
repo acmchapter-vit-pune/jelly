@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getPusherClient } from "@/lib/pusherClient";
 import { PROBLEM_STATEMENTS } from "@/lib/psData";
 
-const MAX_TEAMS = 7;
+const MAX_TEAMS = 6;
 
 // ── Admin secret gate ─────────────────────────────────────────────────────────
 const SecretGate = ({ onSuccess }) => {
@@ -76,7 +76,7 @@ const SecretGate = ({ onSuccess }) => {
                                 <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
                                 VERIFYING...
                             </span>
-                        ) : "VIEW DASHBOARD →"}
+                        ) : "VIEW DASHBOARD"}
                     </button>
                 </motion.div>
             </div>

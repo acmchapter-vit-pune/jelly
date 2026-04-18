@@ -133,7 +133,7 @@ const PsLogin = () => {
                                 <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
                                 LOGGING IN...
                             </span>
-                        ) : "LOGIN →"}
+                        ) : "LOGIN"}
                     </button>
 
                     <div className="border-t border-dashed border-gray-800 pt-6 text-center">

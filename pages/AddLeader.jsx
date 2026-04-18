@@ -147,7 +147,7 @@ const AddLeader = () => {
                         </AnimatePresence>
                         <button onClick={handleAuth}
                                 className="w-full py-3.5 border-2 border-[#FF4600] text-[#FF4600] font-bold uppercase tracking-widest text-sm hover:bg-[#FF4600] hover:text-black transition-all duration-300 rounded-md">
-                            ENTER →
+                            ENTER
                         </button>
                     </motion.div>
                 </div>

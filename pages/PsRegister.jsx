@@ -151,7 +151,7 @@ const PsRegister = () => {
                                 <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
                                 REGISTERING...
                             </span>
-                        ) : "REGISTER →"}
+                        ) : "REGISTER"}
                     </button>
 
                     <div className="border-t border-dashed border-gray-800 pt-6 text-center">
@@ -160,7 +160,7 @@ const PsRegister = () => {
                             href="/hackathon/psLogin"
                             className="text-[#F5B301] text-xs font-mono uppercase tracking-widest hover:underline"
                         >
-                            LOGIN HERE →
+                            LOGIN HERE
                         </Link>
                     </div>
                 </motion.div>

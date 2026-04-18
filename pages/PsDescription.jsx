@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 import { getPusherClient } from "@/lib/pusherClient";
 import { PROBLEM_STATEMENTS } from "@/lib/psData";
 
-const MAX_TEAMS = 7;
+const MAX_TEAMS = 6;
 
 // ── Slot Dots ─────────────────────────────────────────────────────────────────
 const SlotDots = ({ remaining, color }) => {

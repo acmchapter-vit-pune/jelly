@@ -16,7 +16,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getPusherClient } from "@/lib/pusherClient";
 import { PROBLEM_STATEMENTS } from "@/lib/psData";
 
-const MAX_TEAMS = 7;
+const MAX_TEAMS = 6;
 
 // ── Toast ─────────────────────────────────────────────────────────────────────
 const Toast = ({ toast }) => (
@@ -116,7 +116,7 @@ const ConfirmModal = ({ ps, onClose, onConfirm, isSubmitting }) => {
                             <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
                             LOCKING IN...
                         </span>
-                    ) : "CONFIRM →"}
+                    ) : "CONFIRM"}
                 </button>
             </motion.div>
         </motion.div>
@@ -380,7 +380,7 @@ const PsSelection = () => {
                                         <span className="font-mono text-xs sm:text-sm"
                                               style={{ color: ps.remaining <= 2 ? "#F5B301" : ps.color }}>
                                             <span className="font-bold">{ps.remaining}</span>
-                                            <span className="text-gray-600">/7</span>
+                                            <span className="text-gray-600">/6</span>
                                         </span>
                                     )}
                                 </div>
